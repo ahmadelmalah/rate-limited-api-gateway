@@ -15,10 +15,10 @@ cache: RedisCache = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    global redis_client, rate_limiter, cache
     redis_client = Redis.from_url(settings.REDIS_URL, encoding="utf-8", decode_responses=True)
-    rate_limiter = TokenBucketRateLimiter(redis_client)
-    cache = RedisCache(redis_client)
+    app.state.redis = redis_client
+    app.state.rate_limiter = TokenBucketRateLimiter(redis_client)
+    app.state.cache = RedisCache(redis_client)
     
     yield
     
