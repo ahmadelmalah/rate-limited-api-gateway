@@ -33,26 +33,6 @@ class CacheInterface(ABC):
 # IMPLEMENTATION Section
 # -----------------------------------------------------------------------------
 
-class TokenBucketRateLimiter(RateLimiterInterface):
-    def __init__(self, config_map: Dict[TierType, RateLimitConfig]):
-        self.config_map = config_map
-        # TODO: Initialize storage (Redis client or in-memory dict)
-        # Store: {api_key: {"tokens": float, "last_refill": timestamp}}
-        pass
-
-    async def is_allowed(self, api_key: str) -> Tuple[bool, Dict[str, Any]]:
-        # TODO: Implement token bucket logic
-        # Steps:
-        # 1. Get current token count for api_key
-        # 2. Calculate tokens to add based on time elapsed
-        # 3. Check if at least 1 token available
-        # 4. Return result with metadata
-        pass
-
-    async def consume_token(self, api_key: str) -> None:
-        # TODO: Consume one token from the bucket
-        pass
-
 class InMemoryCache(CacheInterface):
     """
     Thread-safe operations

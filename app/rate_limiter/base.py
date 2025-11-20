@@ -5,7 +5,7 @@ class RateLimiterInterface(ABC):
     """Abstract interface for rate limiting."""
     
     @abstractmethod
-    async def is_allowed(self, key: str) -> Tuple[bool, Dict[str, Any]]:
+    async def is_allowed(self, key: str, config: "RateLimitConfig") -> Tuple[bool, Dict[str, Any]]:
         """
         Check if request is allowed.
         Returns: (allowed: bool, metadata: dict)
@@ -14,6 +14,6 @@ class RateLimiterInterface(ABC):
         pass
 
     @abstractmethod
-    async def consume_token(self, key: str) -> None:
+    async def consume_token(self, key: str, config: "RateLimitConfig") -> None:
         """Consume a token from the bucket."""
         pass
