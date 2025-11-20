@@ -6,33 +6,6 @@ from datetime import datetime, timedelta
 from abc import ABC, abstractmethod
 
 # -----------------------------------------------------------------------------
-# MODELS
-# -----------------------------------------------------------------------------
-
-class TierType(Enum):
-    FREE = "free"
-    BASIC = "basic"
-    PREMIUM = "premium"
-    ENTERPRISE = "enterprise"
-
-class RateLimitConfig:
-    """Rate limit configuration per tier using token bucket."""
-    def __init__(self, tier: TierType, requests_per_minute: int, burst_size: int = 0):
-        self.tier = tier
-        self.requests_per_minute = requests_per_minute
-        # If burst_size is 0, default to requests_per_minute
-        self.burst_size = burst_size or requests_per_minute
-
-class APIKey:
-    """API Key model."""
-    def __init__(self, key: str, tier: TierType, user_id: str, is_active: bool = True):
-        self.key = key
-        self.tier = tier
-        self.user_id = user_id
-        self.is_active = is_active
-        self.created_at = datetime.utcnow()
-
-# -----------------------------------------------------------------------------
 # INTERFACES
 # -----------------------------------------------------------------------------
 
