@@ -9,23 +9,6 @@ from abc import ABC, abstractmethod
 # INTERFACES
 # -----------------------------------------------------------------------------
 
-class RateLimiterInterface(ABC):
-    """Abstract interface for rate limiting."""
-    
-    @abstractmethod
-    async def is_allowed(self, api_key: str) -> Tuple[bool, Dict[str, Any]]:
-        """
-        Check if request is allowed using token bucket algorithm.
-        Returns: (allowed: bool, metadata: dict)
-        Metadata includes: remaining, reset_time, retry_after
-        """
-        pass
-
-    @abstractmethod
-    async def consume_token(self, api_key: str) -> None:
-        """Consume a token from the bucket."""
-        pass
-
 class CacheInterface(ABC):
     """Abstract interface for caching."""
     
