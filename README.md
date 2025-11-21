@@ -64,8 +64,15 @@ This project implements a robust API Gateway with the following core features:
     Ensure you have a Redis instance running locally on port 6379.
 
 2.  **Run the Application**:
+    
+    **Option A: Local (Python)**
     ```bash
     uvicorn app.main:app --reload
+    ```
+
+    **Option B: Docker (Recommended)**
+    ```bash
+    docker-compose up --build
     ```
 
 3.  **Make Requests**:
