@@ -7,10 +7,7 @@ from app.gateway.router import router as gateway_router
 from app.rate_limiter.token_bucket import TokenBucketRateLimiter
 from app.cache.redis_cache import RedisCache
 
-# Global state
-redis_client: Redis = None
-rate_limiter: TokenBucketRateLimiter = None
-cache: RedisCache = None
+
 
 from app.logging_config import setup_logging
 import logging
